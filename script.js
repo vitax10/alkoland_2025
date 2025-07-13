@@ -42,6 +42,6 @@ window.onload = function() {
         introVideo.addEventListener('ended', showInvitation);
 
         // Or use this for debugging:
-        setTimeout(showInvitation, 1000); 
+        //setTimeout(showInvitation, 1000); 
     });
 };
