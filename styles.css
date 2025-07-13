@@ -1,0 +1,257 @@
+/* ADD THIS LINE AT THE TOP */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
+
+
+/* --- Font Loading --- */
+@font-face {
+  font-family: 'SF Fedora';
+  src: url('SF-Fedora.ttf') format('truetype');
+}
+
+
+/* --- Basic Page Setup --- */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #111;
+  margin: 0;
+  font-family: sans-serif;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 2vmin;
+}
+
+/* --- Entry Screen --- */
+#entry-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('img/entry-background.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* === ENHANCED DYNAMIC BUTTON STYLES === */
+
+#start-button {
+    font-family: 'SF Fedora', sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    padding: 0.75em 1.5em;
+    border: clamp(4px, 0.5vw, 8px) solid #4a3a2a;
+    background-color: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    background-image: linear-gradient(to bottom, 
+        #ff3300 0%,
+        #ff4500 20%,
+        #ff6600 40%,
+        #ff9900 55%,
+        #ffcc00 75%,
+        #ffff00 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    box-shadow: 
+        0 0 3vmin rgba(0,0,0,0.8),
+        inset 0 0.1vmin 0 rgba(255,255,255,0.1),
+        inset 0 -0.1vmin 0 rgba(0,0,0,0.3);
+}
+
+#start-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+#start-button:hover {
+    border-color: #ffcc00;
+    transform: translateY(-0.05em);
+    box-shadow: 
+        0 0.5vmin 4vmin rgba(255,204,0,0.3),
+        0 0 3vmin rgba(0,0,0,0.8),
+        inset 0 0.2vmin 0 rgba(255,255,255,0.2),
+        inset 0 -0.2vmin 0 rgba(0,0,0,0.3);
+}
+
+#start-button:hover::before {
+    left: 100%;
+}
+
+#start-button:active {
+    transform: translateY(0);
+}
+
+
+/* --- Video Container --- */
+#video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    z-index: 99;
+    display: none;
+}
+
+#intro-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ======================================= */
+/* === DYNAMIC POSTER STYLES === */
+/* ======================================= */
+
+body.main-background {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('img/background.png');
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s ease-in-out;
+}
+
+.poster-container {
+    display: none;
+    width: 60vw;
+    max-width: 90vw; 
+    padding: 5vmin 3vmin;
+    text-align: center;
+    border: clamp(4px, 0.5vw, 8px) solid #4a3a2a;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 4vmin rgba(0,0,0,0.8);
+    opacity: 0;
+}
+
+
+.poster-container.visible {
+    display: block;
+    animation: fadeIn 1.5s 0.2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.poster-subtitle,
+.poster-name,
+.poster-date,
+.poster-main-event {
+    font-family: 'SF Fedora', sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* MODIFIED: .poster-name is no longer in this group */
+.poster-subtitle,
+.poster-date {
+    color: #ffcc00;
+    text-shadow: 0.05em 0.05em 0.15em rgba(0, 0, 0, 0.7);
+}
+
+/* NEW: A dedicated rule for the guest name with a custom gradient */
+.poster-name {
+    /* MODIFIED: New 5-color linear gradient */
+    background-image: linear-gradient(to bottom, 
+         #c9362b 0%,
+        #d4665d 25%,
+        #de9690 50%,
+       #e9c6c2 75%,
+        #f3f6f4 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Combined rule for any text that needs the gradient */
+.gradient-line,
+.special-char {
+    display: inline-block;
+    background-image: linear-gradient(to bottom, 
+        #ff3300 0%,
+        #ff4500 20%,
+        #ff6600 40%,
+        #ff9900 55%,
+        #ffcc00 75%,
+        #ffff00 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    padding: 0; /* Reset padding for this group */
+}
+
+.gradient-line {
+    /* Add padding only to the lines to prevent clipping */
+    padding-right: 0.3em;
+    padding-left: 0.1em;
+    margin-right: -0.3em; /* Counteract padding for alignment */
+}
+
+.special-char {
+    font-family: 'Oswald', sans-serif;
+    position: relative;
+    top: 0.05em;
+    left: 0.2em;
+    transform: rotate(12deg);
+    font-size: 100%;
+}
+
+
+
+/* Font sizes are already dynamic using clamp() */
+.poster-subtitle {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+}
+
+.poster-name {
+    font-size: clamp(2.2rem, 7vw, 4rem);
+    line-height: 1.1;
+    margin-top: 1vh;
+}
+
+.poster-date {
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    margin-top: 3vh;
+}
+
+.poster-main-event {
+    font-size: clamp(3rem, 9vw, 6rem);
+    line-height: 1.2;
+    margin-top: 2vh;
+}
+
+.poster-footer {
+    font-family: sans-serif;
+    /* MODIFIED: Decreased the font size values */
+    font-size: clamp(0.6rem, 1.2vw, 0.75rem); 
+    text-transform: none;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    /* MODIFIED: Increased the top margin to push the text down */
+    margin-top: 6vh; 
+}
