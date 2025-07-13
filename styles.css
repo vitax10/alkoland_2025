@@ -255,3 +255,45 @@ body.main-background {
     /* MODIFIED: Increased the top margin to push the text down */
     margin-top: 6vh; 
 }
+
+/* ======================================= */
+/* === MOBILE RESPONSIVE STYLES === */
+/* ======================================= */
+
+@media (max-width: 768px) {
+
+    /* Make the poster container take up more screen width on mobile */
+    .poster-container {
+        width: 90vw; /* Use more of the available width */
+        padding: 4vmin 2vmin; /* Slightly reduce padding */
+    }
+
+    /* Adjust the main title to be more readable on narrow screens */
+    .poster-main-event {
+        font-size: clamp(2.5rem, 12vw, 4.5rem); /* Adjust clamp values for mobile */
+        line-height: 1.1;
+    }
+
+    /* Tweak other font sizes for better balance */
+    .poster-subtitle {
+        font-size: clamp(1.5rem, 7vw, 2.5rem);
+    }
+
+    .poster-name {
+        font-size: clamp(1.8rem, 8vw, 3rem);
+    }
+    
+    .poster-date {
+        font-size: clamp(1rem, 5vw, 1.5rem);
+    }
+    
+    /* Reduce the large vertical margins, which take up too much space on mobile */
+    .poster-date,
+    .poster-main-event {
+        margin-top: 2vh;
+    }
+
+    .poster-footer {
+        margin-top: 4vh;
+    }
+}
